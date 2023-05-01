@@ -47,6 +47,10 @@ int main(int argc, char** argv) {
 
   string answer;
 
+  Event event1;
+  Event event2;
+  Event event3;
+
   while (answer != "Q" && answer != "q"){
     cout << "Welcome to the command-line event monitoring system for the Network Monitoring team at Ford!" << endl;
     cout << "Here are the current features:" << endl;
@@ -60,7 +64,6 @@ int main(int argc, char** argv) {
     cin >> answer;
     if (answer == "1"){  
       // Incoming Event Data
-      Event event1;
       event1.setTitle("AEC router 1A is down");
       event1.setDescription("Router went down on the weekend due to power outage.");
       event1.setSeverity("critical");
@@ -69,7 +72,6 @@ int main(int argc, char** argv) {
       numEvents++;
       numRouterEvents++;
     
-      Event event2;
       event2.setTitle("AEC router 2A is down");
       event2.setDescription("Router went down on the weekend due to power outage.");
       event2.setSeverity("critical");
@@ -78,7 +80,6 @@ int main(int argc, char** argv) {
       numEvents++;
       numRouterEvents++;
     
-      Event event3;
       event3.setTitle("WHQ CPU27 is down");
       event3.setDescription("CPU disconnected from server.");
       event3.setSeverity("medium");
@@ -90,6 +91,8 @@ int main(int argc, char** argv) {
       cout << "Data successfully ingested." << endl;
     } else if (answer == "2"){
       // Display all event data
+      cout << "Displaying all event data: " << endl;
+      cout << "===========================" << endl;
       for (int i=0; i<numEvents; i++){
         cout << "Event name: "<< allEvents[i].getTitle() << endl;
         cout << "Event description: "<< allEvents[i].getDescription() << endl;
@@ -97,7 +100,13 @@ int main(int argc, char** argv) {
         cout << endl;
       }
     } else if (answer == "3"){
-      cout << endl;
+      // Display router event data
+      for (int i=0; i<numRouterEvents; i++){
+        cout << "Event name: "<< routerEvents[i].getTitle() << endl;
+        cout << "Event description: "<< routerEvents[i].getDescription() << endl;
+        cout << "Event severity: "<< routerEvents[i].getSeverity() << endl;
+        cout << endl;
+      }
     } else if (answer == "4"){
       cout << endl;
     } else if (answer == "Q" || answer == "q"){
