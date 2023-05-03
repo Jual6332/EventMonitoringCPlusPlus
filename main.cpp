@@ -51,6 +51,8 @@ int main(int argc, char** argv) {
   Event event2;
   Event event3;
 
+  bool hasDataBeenIngested = false;
+
   while (answer != "Q" && answer != "q"){
     cout << "Welcome to the command-line event monitoring system for the Network Monitoring team at Ford!" << endl;
     cout << "Here are the current features:" << endl;
@@ -84,31 +86,50 @@ int main(int argc, char** argv) {
       event3.setDescription("CPU disconnected from server.");
       event3.setSeverity("medium");
       allEvents[numEvents] = event3;
-      CPUEvents[numRouterEvents] = event3;
+      CPUEvents[numCPUEvents] = event3;
       numEvents++;
       numCPUEvents++;
-      
+
+      hasDataBeenIngested = true;
       cout << "Data successfully ingested." << endl;
     } else if (answer == "2"){
-      // Display all event data
-      cout << "Displaying all event data: " << endl;
-      cout << "===========================" << endl;
-      for (int i=0; i<numEvents; i++){
-        cout << "Event name: "<< allEvents[i].getTitle() << endl;
-        cout << "Event description: "<< allEvents[i].getDescription() << endl;
-        cout << "Event severity: "<< allEvents[i].getSeverity() << endl;
-        cout << endl;
+      if (hasDataBeenIngested){
+        // Display all event data
+        cout << "Displaying all event data: " << endl;
+        cout << "===========================" << endl;
+        for (int i=0; i<numEvents; i++){
+          cout << "Event name: "<< allEvents[i].getTitle() << endl;
+          cout << "Event description: "<< allEvents[i].getDescription() << endl;
+          cout << "Event severity: "<< allEvents[i].getSeverity() << endl;
+          cout << endl;
+        }
+      } else {
+        cout << "Data must be ingested before being displayed! Choose Option 1." << endl;
       }
     } else if (answer == "3"){
-      // Display router event data
-      for (int i=0; i<numRouterEvents; i++){
-        cout << "Event name: "<< routerEvents[i].getTitle() << endl;
-        cout << "Event description: "<< routerEvents[i].getDescription() << endl;
-        cout << "Event severity: "<< routerEvents[i].getSeverity() << endl;
-        cout << endl;
+      if (hasDataBeenIngested){
+        // Display router event data
+        for (int i=0; i<numRouterEvents; i++){
+          cout << "Event name: "<< routerEvents[i].getTitle() << endl;
+          cout << "Event description: "<< routerEvents[i].getDescription() << endl;
+          cout << "Event severity: "<< routerEvents[i].getSeverity() << endl;
+          cout << endl;
+        }
+      } else {
+        cout << "Data must be ingested before being displayed! Choose Option 1." << endl;
       }
     } else if (answer == "4"){
-      cout << endl;
+      if (hasDataBeenIngested){
+        // Display router event data
+        for (int i=0; i<numCPUEvents; i++){
+          cout << "Event name: "<< CPUEvents[i].getTitle() << endl;
+          cout << "Event description: "<< CPUEvents[i].getDescription() << endl;
+          cout << "Event severity: "<< CPUEvents[i].getSeverity() << endl;
+          cout << endl;
+        }
+      } else {
+        cout << "Data must be ingested before being displayed! Choose Option 1." << endl;
+      }
     } else if (answer == "Q" || answer == "q"){
       cout << "The program is stopping." << endl;
     } else {
