@@ -45,12 +45,17 @@ int main(int argc, char** argv) {
   // Define the array collection of CPU events
   Event CPUEvents[totalPossibleEvents];
 
+  // User-input
   string answer;
 
+  // Define the event object instances
   Event event1;
   Event event2;
   Event event3;
+  Event event4;
+  Event event5;
 
+  // Check if data has been ingested into the algorithm
   bool hasDataBeenIngested = false;
 
   while (answer != "Q" && answer != "q"){
@@ -66,7 +71,7 @@ int main(int argc, char** argv) {
     cin >> answer;
     if (answer == "1"){  
       // Incoming Event Data
-      event1.setTitle("AEC router 1A is down");
+      event1.setTitle("AEC router 1A is down.");
       event1.setDescription("Router went down on the weekend due to power outage.");
       event1.setSeverity("critical");
       allEvents[numEvents] = event1;
@@ -74,7 +79,7 @@ int main(int argc, char** argv) {
       numEvents++;
       numRouterEvents++;
     
-      event2.setTitle("AEC router 2A is down");
+      event2.setTitle("AEC router 2A is down.");
       event2.setDescription("Router went down on the weekend due to power outage.");
       event2.setSeverity("critical");
       allEvents[numEvents] = event2;
@@ -82,13 +87,29 @@ int main(int argc, char** argv) {
       numEvents++;
       numRouterEvents++;
     
-      event3.setTitle("WHQ CPU27 is down");
+      event3.setTitle("WHQ CPU27 is down.");
       event3.setDescription("CPU disconnected from server.");
       event3.setSeverity("medium");
       allEvents[numEvents] = event3;
       CPUEvents[numCPUEvents] = event3;
       numEvents++;
       numCPUEvents++;
+
+      event4.setTitle("WHQ CPU38 is down.");
+      event4.setDescription("CPU disconnected from server.");
+      event4.setSeverity("medium");
+      allEvents[numEvents] = event4;
+      CPUEvents[numCPUEvents] = event4;
+      numEvents++;
+      numCPUEvents++;
+
+      event5.setTitle("Electric plant router 12B is down.");
+      event5.setDescription("Router went down on the weekend due to power outage.");
+      event5.setSeverity("medium");
+      allEvents[numEvents] = event5;
+      routerEvents[numRouterEvents] = event5;
+      numEvents++;
+      numRouterEvents++;
 
       hasDataBeenIngested = true;
       cout << "Data successfully ingested." << endl;
