@@ -81,6 +81,7 @@ int main(int argc, char** argv) {
       event1.setTitle("AEC router 1A is down.");
       event1.setDescription("Router went down on the weekend due to power outage.");
       event1.setSeverity("critical");
+      event1.setEventType("router");
       allEvents[numEvents] = event1;
       routerEvents[numRouterEvents] = event1;
       numEvents++;
@@ -89,6 +90,7 @@ int main(int argc, char** argv) {
       event2.setTitle("AEC router 2A is down.");
       event2.setDescription("Router went down on the weekend due to power outage.");
       event2.setSeverity("critical");
+      event2.setEventType("router");
       allEvents[numEvents] = event2;
       routerEvents[numRouterEvents] = event2;
       numEvents++;
@@ -97,6 +99,7 @@ int main(int argc, char** argv) {
       event3.setTitle("WHQ CPU27 is down.");
       event3.setDescription("CPU disconnected from server.");
       event3.setSeverity("medium");
+      event3.setEventType("cpu");
       allEvents[numEvents] = event3;
       CPUEvents[numCPUEvents] = event3;
       numEvents++;
@@ -105,6 +108,7 @@ int main(int argc, char** argv) {
       event4.setTitle("WHQ CPU38 is down.");
       event4.setDescription("CPU disconnected from server.");
       event4.setSeverity("medium");
+      event4.setEventType("cpu");
       allEvents[numEvents] = event4;
       CPUEvents[numCPUEvents] = event4;
       numEvents++;
@@ -113,6 +117,7 @@ int main(int argc, char** argv) {
       event5.setTitle("Electric plant router 12B is down.");
       event5.setDescription("Router went down on the weekend due to power outage.");
       event5.setSeverity("medium");
+      event5.setEventType("router");
       allEvents[numEvents] = event5;
       routerEvents[numRouterEvents] = event5;
       numEvents++;
