@@ -10,6 +10,7 @@ class Event {
     string title = "";
     string description = "";
     string severity = "";
+    string eventType = "";
   public:
     string getTitle(){
       return title;
@@ -20,6 +21,9 @@ class Event {
     string getDescription(){
       return description;
     }
+    string getEventType(){
+      return eventType;
+    }
     void setDescription(string de){
       description = de;
     }
@@ -28,6 +32,9 @@ class Event {
     }
     void setSeverity(string sv){
       severity = sv;
+    }
+    void setEventType(string ev){
+      eventType = ev;
     }
 };
 
@@ -111,7 +118,7 @@ int main(int argc, char** argv) {
       numEvents++;
       numRouterEvents++;
 
-      hasDataBeenIngested = true;
+      hasDataBeenIngested = true; // Update to reflect that the data has been ingested
       cout << "Data successfully ingested." << endl;
     } else if (answer == "2"){
       if (hasDataBeenIngested){
@@ -156,7 +163,5 @@ int main(int argc, char** argv) {
     } else {
       cout << "I'm sorry, I don't understand your request." << endl;
     }
-
   }
-  
 }
