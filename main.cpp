@@ -38,6 +38,41 @@ class Event {
     }
 };
 
+/*
+Event * filterBasedOnEventType(Event events,int numEvents){
+  // Define and initialize event counters
+  int numRouterEvents = 0;
+  int numCPUEvents = 0;
+  int numOtherEvents = 0;
+
+  // Define event arrays for filtering based on eventType
+  Event routerEvents[numRouterEvents];
+  Event CPUEvents[numCPUEvents];
+  Event otherEvents[numOtherEvents];
+
+  // Iterate through events array and filter based on eventType
+  for (int i=0; i<numEvents; i++){
+    if (events[i].eventType == "router"){
+      routerEvents[numRouterEvents] = events[i]; // Store in router events array
+    } else if (events[i].eventType == "CPU"){
+      CPUEvents[numCPUEvents] = events[i]; // Store in CPU events array
+    } else {
+      otherEvents[numOtherEvents] = events[i]; // Store in other events array
+    }
+  }
+
+  // Define results array for sending the event arrays back to the main function
+  
+  Event result[3];
+  
+  result[0] = routerEvents;
+  result[1] = CPUEvents;
+  result[2] = otherEvents;
+
+  return result;
+}
+*/
+
 int main(int argc, char** argv) {  
   // Define number of events
   int numEvents = 0;
@@ -61,6 +96,10 @@ int main(int argc, char** argv) {
   Event event3;
   Event event4;
   Event event5;
+  Event event6;
+
+  //
+  Event filteredArray;
 
   // Check if data has been ingested into the algorithm
   bool hasDataBeenIngested = false;
@@ -114,7 +153,7 @@ int main(int argc, char** argv) {
       numEvents++;
       numCPUEvents++;
 
-      event5.setTitle("Electric plant router 12B is down.");
+      event5.setTitle("Maintenance room router 1B is down.");
       event5.setDescription("Router went down on the weekend due to power outage.");
       event5.setSeverity("medium");
       event5.setEventType("router");
@@ -123,8 +162,41 @@ int main(int argc, char** argv) {
       numEvents++;
       numRouterEvents++;
 
+      event6.setTitle("Electric plant router 12B is down.");
+      event6.setDescription("Router went down on the weekend due to power outage.");
+      event6.setSeverity("critical");
+      event6.setEventType("router");
+      allEvents[numEvents] = event6;
+      routerEvents[numRouterEvents] = event6;
+      numEvents++;
+      numRouterEvents++;
+
+      
+
       hasDataBeenIngested = true; // Update to reflect that the data has been ingested
       cout << "Data successfully ingested." << endl;
+
+      /*
+      // Declare result array and initialize with empty events
+      Event result[numEvents][numEvents];
+
+      // Declare and initialize empty event
+      Event e0;
+      e0.setTitle("");
+      e0.setDescription("");
+      e0.setSeverity("");
+      e0.setEventType("");
+
+      // Initialize result array with empty events
+      for (int i=0; i<numEvents; i++){
+        for (int j=0; j<numEvents; j++){
+          result[i][j] = e0;
+        }
+      }
+      */
+      // Filter event dataset by event type
+      //result = filterBasedOnEventType(&allEvents,numEvents);
+      
     } else if (answer == "2"){
       if (hasDataBeenIngested){
         // Display all event data
@@ -137,7 +209,7 @@ int main(int argc, char** argv) {
           cout << endl;
         }
       } else {
-        cout << "Data must be ingested before being displayed! Choose Option 1." << endl;
+        cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
     } else if (answer == "3"){
       if (hasDataBeenIngested){
@@ -149,7 +221,7 @@ int main(int argc, char** argv) {
           cout << endl;
         }
       } else {
-        cout << "Data must be ingested before being displayed! Choose Option 1." << endl;
+        cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
     } else if (answer == "4"){
       if (hasDataBeenIngested){
@@ -161,7 +233,7 @@ int main(int argc, char** argv) {
           cout << endl;
         }
       } else {
-        cout << "Data must be ingested before being displayed! Choose Option 1." << endl;
+        cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
     } else if (answer == "Q" || answer == "q"){
       cout << "The program is stopping." << endl;
