@@ -240,6 +240,8 @@ int main(int argc, char** argv) {
           cout << "Event name: "<< allEvents[i].getTitle() << endl;
           cout << "Event description: "<< allEvents[i].getDescription() << endl;
           cout << "Event severity: "<< allEvents[i].getSeverity() << endl;
+          cout << "Event type: "<< allEvents[i].getEventType() << endl;
+          cout << "Event site: "<< allEvents[i].getSite() << endl;
           cout << endl;
         }
       } else {
@@ -281,6 +283,8 @@ int main(int argc, char** argv) {
           cout << "Event name: "<< allEvents[i].getTitle() << endl;
           cout << "Event description: "<< allEvents[i].getDescription() << endl;
           cout << "Event severity: "<< allEvents[i].getSeverity() << endl;
+          cout << "Event type: "<< allEvents[i].getEventType() << endl;
+          cout << "Event site: "<< allEvents[i].getSite() << endl;
           cout << endl;
         }
 
