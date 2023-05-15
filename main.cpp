@@ -236,6 +236,7 @@ int main(int argc, char** argv) {
         cout << "Displaying all event data: " << endl;
         cout << "===========================" << endl;
         for (int i=0; i<numEvents; i++){
+          cout << "EventID: " << i << endl;
           cout << "Event name: "<< allEvents[i].getTitle() << endl;
           cout << "Event description: "<< allEvents[i].getDescription() << endl;
           cout << "Event severity: "<< allEvents[i].getSeverity() << endl;
@@ -276,13 +277,14 @@ int main(int argc, char** argv) {
         cout << "Displaying all event data: " << endl;
         cout << "===========================" << endl;
         for (int i=0; i<numEvents; i++){
+          cout << "EventID: " << i << endl;
           cout << "Event name: "<< allEvents[i].getTitle() << endl;
           cout << "Event description: "<< allEvents[i].getDescription() << endl;
           cout << "Event severity: "<< allEvents[i].getSeverity() << endl;
           cout << endl;
         }
 
-        cout << "For which event would you like to change the details?" << endl;
+        cout << "For which event would you like to change the details? (Enter numeric event ID)" << endl;
         cin >> changeEventID; // The eventID of the event to change
         cout << "Which detail (use numeric) would you like to change?" << endl;
         cout << "1. Title" << endl;
