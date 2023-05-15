@@ -271,8 +271,8 @@ int main(int argc, char** argv) {
       }
     } else if (answer == "5"){
       if (hasDataBeenIngested){
-        int changeEventID = 0;
-        int changedDetail = 0;
+        int changedEventID = 0;
+        int changedDetailID = 0;
         // Display all event data
         cout << "Displaying all event data: " << endl;
         cout << "===========================" << endl;
@@ -285,15 +285,48 @@ int main(int argc, char** argv) {
         }
 
         cout << "For which event would you like to change the details? (Enter numeric event ID)" << endl;
-        cin >> changeEventID; // The eventID of the event to change
-        cout << "Which detail (use numeric) would you like to change?" << endl;
+        cin >> changedEventID; // The eventID of the event to change
+        cout << "Which detail would you like to change? (Enter numeric event ID)" << endl;
         cout << "1. Title" << endl;
         cout << "2. Description" << endl;
         cout << "3. Severity" << endl;
         cout << "4. EventType" << endl;
         cout << "5. Site" << endl;
         
-        cin >> changedDetail;
+        cin >> changedDetailID;
+
+        string changedDetail = "";
+        string newValueChangedDetail = "";
+
+        if (changedDetailID == 1){
+          changedDetail = "Title";
+        } else if (changedDetailID == 2){
+          changedDetail = "Description";
+        } else if (changedDetailID == 3){
+          changedDetail = "Severity";
+        } else if (changedDetailID == 4) {
+          changedDetail = "EventType";
+        } else if (changedDetailID == 5){
+          changedDetail = "site";
+        } else {
+          cout << "I didn't understand your input. Try again." << endl;
+        }
+
+        cout << "What is the new value for the " << changedDetail << " detail?" << endl;
+
+        cin >> newValueChangedDetail;
+
+        if (changedDetailID == 1){
+          allEvents[changedEventID].setTitle(newValueChangedDetail);
+        } else if (changedDetailID == 2){
+          allEvents[changedEventID].setDescription(newValueChangedDetail);
+        } else if (changedDetailID == 3){
+          allEvents[changedEventID].setSeverity(newValueChangedDetail);
+        } else if (changedDetailID == 4){
+          allEvents[changedEventID].setEventType(newValueChangedDetail);
+        } else if (changedDetailID == 5){
+          allEvents[changedEventID].setSite(newValueChangedDetail);
+        }
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
