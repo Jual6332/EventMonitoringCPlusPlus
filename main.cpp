@@ -91,6 +91,21 @@ Event initializeWithEmptyEvent(){
   return ev;
 }
 
+void printAllEventData(Event allEvents[],int numEvents){
+  // Display all event data
+  cout << "Displaying all event data: " << endl;
+  cout << "===========================" << endl;
+  for (int i=0; i<numEvents; i++){
+    cout << "EventID: " << i << endl;
+    cout << "Event name: " << allEvents[i].getTitle() << endl;
+    cout << "Event description: " << allEvents[i].getDescription() << endl;
+    cout << "Event severity: " << allEvents[i].getSeverity() << endl;
+    cout << "Event type: " << allEvents[i].getEventType() << endl;
+    cout << "Event site: " << allEvents[i].getSite() << endl;
+    cout << endl;
+  }
+}
+
 int main(int argc, char** argv) {  
   // Define number of events
   int numEvents = 0;
@@ -232,18 +247,7 @@ int main(int argc, char** argv) {
       
     } else if (answer == "2"){
       if (hasDataBeenIngested){
-        // Display all event data
-        cout << "Displaying all event data: " << endl;
-        cout << "===========================" << endl;
-        for (int i=0; i<numEvents; i++){
-          cout << "EventID: " << i << endl;
-          cout << "Event name: "<< allEvents[i].getTitle() << endl;
-          cout << "Event description: "<< allEvents[i].getDescription() << endl;
-          cout << "Event severity: "<< allEvents[i].getSeverity() << endl;
-          cout << "Event type: "<< allEvents[i].getEventType() << endl;
-          cout << "Event site: "<< allEvents[i].getSite() << endl;
-          cout << endl;
-        }
+        printAllEventData(allEvents,numEvents);
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
@@ -275,18 +279,7 @@ int main(int argc, char** argv) {
       if (hasDataBeenIngested){
         int changedEventID = 0;
         int changedDetailID = 0;
-        // Display all event data
-        cout << "Displaying all event data: " << endl;
-        cout << "===========================" << endl;
-        for (int i=0; i<numEvents; i++){
-          cout << "EventID: " << i << endl;
-          cout << "Event name: "<< allEvents[i].getTitle() << endl;
-          cout << "Event description: "<< allEvents[i].getDescription() << endl;
-          cout << "Event severity: "<< allEvents[i].getSeverity() << endl;
-          cout << "Event type: "<< allEvents[i].getEventType() << endl;
-          cout << "Event site: "<< allEvents[i].getSite() << endl;
-          cout << endl;
-        }
+        printAllEventData(allEvents,numEvents);
 
         cout << "For which event would you like to change the details? (Enter numeric event ID)" << endl;
         cin >> changedEventID; // The eventID of the event to change
