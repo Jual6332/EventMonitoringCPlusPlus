@@ -5,6 +5,18 @@ using namespace std;
 
 const int totalPossibleEvents = 100;
 
+class Site {
+  private:
+    string name = "";
+  public:
+    string getSiteName(){
+      return name;
+    }
+    void setSiteName(string nm){
+      name = nm;
+    }
+};
+
 class Event {
   private:
     string title = "";
