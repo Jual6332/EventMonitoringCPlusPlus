@@ -80,6 +80,17 @@ Event * filterBasedOnEventType(Event events,int numEvents){
 }
 */
 
+Event initializeWithEmptyEvent(){
+  Event ev;
+  ev.setTitle("");
+  ev.setDescription("");
+  ev.setSeverity("");
+  ev.setEventType("");
+  ev.setSite("");
+  
+  return ev;
+}
+
 int main(int argc, char** argv) {  
   // Define number of events
   int numEvents = 0;
@@ -104,6 +115,13 @@ int main(int argc, char** argv) {
   Event event4;
   Event event5;
   Event event6;
+
+  event1 = initializeWithEmptyEvent();
+  event2 = initializeWithEmptyEvent();
+  event3 = initializeWithEmptyEvent();
+  event4 = initializeWithEmptyEvent();
+  event5 = initializeWithEmptyEvent();
+  event6 = initializeWithEmptyEvent();
 
   // Declare a filtered array of event objects
   Event filteredArray;
