@@ -128,6 +128,7 @@ int main(int argc, char** argv) {
       event1.setDescription("Router went down on the weekend due to power outage.");
       event1.setSeverity("critical");
       event1.setEventType("router");
+      event1.setSite("AEC");
       allEvents[numEvents] = event1;
       routerEvents[numRouterEvents] = event1;
       numEvents++;
@@ -137,6 +138,7 @@ int main(int argc, char** argv) {
       event2.setDescription("Router went down on the weekend due to power outage.");
       event2.setSeverity("critical");
       event2.setEventType("router");
+      event2.setSite("AEC");
       allEvents[numEvents] = event2;
       routerEvents[numRouterEvents] = event2;
       numEvents++;
@@ -146,6 +148,7 @@ int main(int argc, char** argv) {
       event3.setDescription("CPU disconnected from server.");
       event3.setSeverity("medium");
       event3.setEventType("cpu");
+      event3.setSite("WHQ");
       allEvents[numEvents] = event3;
       CPUEvents[numCPUEvents] = event3;
       numEvents++;
@@ -155,6 +158,7 @@ int main(int argc, char** argv) {
       event4.setDescription("CPU disconnected from server.");
       event4.setSeverity("medium");
       event4.setEventType("cpu");
+      event4.setSite("WHQ");
       allEvents[numEvents] = event4;
       CPUEvents[numCPUEvents] = event4;
       numEvents++;
@@ -164,6 +168,7 @@ int main(int argc, char** argv) {
       event5.setDescription("Router went down on the weekend due to power outage.");
       event5.setSeverity("medium");
       event5.setEventType("router");
+      event5.setSite("AEC");
       allEvents[numEvents] = event5;
       routerEvents[numRouterEvents] = event5;
       numEvents++;
@@ -173,6 +178,7 @@ int main(int argc, char** argv) {
       event6.setDescription("Router went down on the weekend due to power outage.");
       event6.setSeverity("critical");
       event6.setEventType("router");
+      event6.setSite("Electric plant");
       allEvents[numEvents] = event6;
       routerEvents[numRouterEvents] = event6;
       numEvents++;
