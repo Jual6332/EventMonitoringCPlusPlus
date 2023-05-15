@@ -11,6 +11,7 @@ class Event {
     string description = "";
     string severity = "";
     string eventType = "";
+    string site = "";
   public:
     string getTitle(){
       return title;
@@ -21,9 +22,6 @@ class Event {
     string getDescription(){
       return description;
     }
-    string getEventType(){
-      return eventType;
-    }
     void setDescription(string de){
       description = de;
     }
@@ -33,8 +31,17 @@ class Event {
     void setSeverity(string sv){
       severity = sv;
     }
+    string getEventType(){
+      return eventType;
+    }
     void setEventType(string ev){
       eventType = ev;
+    }
+    string getSite(){
+      return site;
+    }
+    void setSite(string st){
+      site = st;
     }
 };
 
@@ -98,7 +105,7 @@ int main(int argc, char** argv) {
   Event event5;
   Event event6;
 
-  //
+  // Declare a filtered array of event objects
   Event filteredArray;
 
   // Check if data has been ingested into the algorithm
