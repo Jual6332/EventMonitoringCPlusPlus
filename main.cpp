@@ -116,6 +116,7 @@ int main(int argc, char** argv) {
   Event event5;
   Event event6;
 
+  // Initialize the new events to empty event objects
   event1 = initializeWithEmptyEvent();
   event2 = initializeWithEmptyEvent();
   event3 = initializeWithEmptyEvent();
@@ -124,7 +125,7 @@ int main(int argc, char** argv) {
   event6 = initializeWithEmptyEvent();
 
   // Declare a filtered array of event objects
-  Event filteredArray;
+  //Event filteredArray;
 
   // Check if data has been ingested into the algorithm
   bool hasDataBeenIngested = false;
@@ -136,6 +137,7 @@ int main(int argc, char** argv) {
     cout << "2. Display all event data" << endl;
     cout << "3. Display router event data" << endl;
     cout << "4. Display CPU event data" << endl;
+    cout << "5. Change an event's data" << endl;
     cout << "Q. Quit program" << endl;
     cout << endl;
     cout << "What do you want to do?" << endl;
@@ -263,6 +265,33 @@ int main(int argc, char** argv) {
           cout << "Event severity: "<< CPUEvents[i].getSeverity() << endl;
           cout << endl;
         }
+      } else {
+        cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
+      }
+    } else if (answer == "5"){
+      if (hasDataBeenIngested){
+        int changeEventID = 0;
+        int changedDetail = 0;
+        // Display all event data
+        cout << "Displaying all event data: " << endl;
+        cout << "===========================" << endl;
+        for (int i=0; i<numEvents; i++){
+          cout << "Event name: "<< allEvents[i].getTitle() << endl;
+          cout << "Event description: "<< allEvents[i].getDescription() << endl;
+          cout << "Event severity: "<< allEvents[i].getSeverity() << endl;
+          cout << endl;
+        }
+
+        cout << "For which event would you like to change the details?" << endl;
+        cin >> changeEventID; // The eventID of the event to change
+        cout << "Which detail (use numeric) would you like to change?" << endl;
+        cout << "1. Title" << endl;
+        cout << "2. Description" << endl;
+        cout << "3. Severity" << endl;
+        cout << "4. EventType" << endl;
+        cout << "5. Site" << endl;
+        
+        cin >> changedDetail;
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
