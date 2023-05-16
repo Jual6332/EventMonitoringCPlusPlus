@@ -37,7 +37,7 @@ class Event {
     string description;
     string severity;
     string eventType;
-    string site;
+    Site site;
   public:
     string getTitle(){
       return title;
@@ -63,10 +63,10 @@ class Event {
     void setEventType(string ev){
       eventType = ev;
     }
-    string getSite(){
+    Site getSite(){
       return site;
     }
-    void setSite(string st){
+    void setSite(Site st){
       site = st;
     }
 };
@@ -106,17 +106,6 @@ Event * filterBasedOnEventType(Event events,int numEvents){
 }
 */
 
-Event initializeWithEmptyEventObject(){
-  Event ev;
-  ev.setTitle("");
-  ev.setDescription("");
-  ev.setSeverity("");
-  ev.setEventType("");
-  ev.setSite("");
-  
-  return ev;
-}
-
 Site initializeWithEmptySiteObject(){
   Site st;
   st.setSiteName("");
@@ -124,6 +113,17 @@ Site initializeWithEmptySiteObject(){
   st.setSiteYearEstablished(0);
   
   return st;
+}
+
+Event initializeWithEmptyEventObject(){
+  Event ev;
+  ev.setTitle("");
+  ev.setDescription("");
+  ev.setSeverity("");
+  ev.setEventType("");
+  ev.setSite(initializeWithEmptySiteObject());
+  
+  return ev;
 }
 
 void printAllEventData(Event allEvents[],int numEvents){
@@ -136,7 +136,10 @@ void printAllEventData(Event allEvents[],int numEvents){
     cout << "Event description: " << allEvents[i].getDescription() << endl;
     cout << "Event severity: " << allEvents[i].getSeverity() << endl;
     cout << "Event type: " << allEvents[i].getEventType() << endl;
-    cout << "Event site: " << allEvents[i].getSite() << endl;
+    cout << "Event site: " << endl;
+    cout << allEvents[i].getSite().getSiteName() << endl;
+    cout << allEvents[i].getSite().getSiteStatus() << endl;
+    cout << allEvents[i].getSite().getSiteYearEstablished() << endl;
     cout << endl;
   }
 }
@@ -205,12 +208,29 @@ int main(int argc, char** argv) {
     cout << "What do you want to do?" << endl;
     cin >> answer;
     if (answer == "1"){  
+      // Set Site Data
+      st1.setSiteName("WHQ");
+      st1.setSiteStatus("Active");
+      st1.setSiteYearEstablished(1980);
+
+      st2.setSiteName("AEC");
+      st2.setSiteStatus("Active");
+      st2.setSiteYearEstablished(1996);
+
+      st3.setSiteName("Rotunda Center");
+      st3.setSiteStatus("Active");
+      st3.setSiteYearEstablished(2005);
+
+      st4.setSiteName("Electric plant");
+      st4.setSiteStatus("Active");
+      st4.setSiteYearEstablished(1992);
+      
       // Incoming Event Data
       event1.setTitle("AEC router 1A is down.");
       event1.setDescription("Router went down on the weekend due to power outage.");
       event1.setSeverity("critical");
       event1.setEventType("router");
-      event1.setSite("AEC");
+      event1.setSite(st2);
       allEvents[numEvents] = event1;
       routerEvents[numRouterEvents] = event1;
       numEvents++;
@@ -220,7 +240,7 @@ int main(int argc, char** argv) {
       event2.setDescription("Router went down on the weekend due to power outage.");
       event2.setSeverity("critical");
       event2.setEventType("router");
-      event2.setSite("AEC");
+      event2.setSite(st2);
       allEvents[numEvents] = event2;
       routerEvents[numRouterEvents] = event2;
       numEvents++;
@@ -230,7 +250,7 @@ int main(int argc, char** argv) {
       event3.setDescription("CPU disconnected from server.");
       event3.setSeverity("medium");
       event3.setEventType("cpu");
-      event3.setSite("WHQ");
+      event3.setSite(st1);
       allEvents[numEvents] = event3;
       CPUEvents[numCPUEvents] = event3;
       numEvents++;
@@ -240,7 +260,7 @@ int main(int argc, char** argv) {
       event4.setDescription("CPU disconnected from server.");
       event4.setSeverity("medium");
       event4.setEventType("cpu");
-      event4.setSite("WHQ");
+      event4.setSite(st1);
       allEvents[numEvents] = event4;
       CPUEvents[numCPUEvents] = event4;
       numEvents++;
@@ -250,7 +270,7 @@ int main(int argc, char** argv) {
       event5.setDescription("Router went down on the weekend due to power outage.");
       event5.setSeverity("medium");
       event5.setEventType("router");
-      event5.setSite("AEC");
+      event5.setSite(st2);
       allEvents[numEvents] = event5;
       routerEvents[numRouterEvents] = event5;
       numEvents++;
@@ -260,7 +280,7 @@ int main(int argc, char** argv) {
       event6.setDescription("Router went down on the weekend due to power outage.");
       event6.setSeverity("critical");
       event6.setEventType("router");
-      event6.setSite("Electric plant");
+      event6.setSite(st4);
       allEvents[numEvents] = event6;
       routerEvents[numRouterEvents] = event6;
       numEvents++;
@@ -340,6 +360,7 @@ int main(int argc, char** argv) {
         cin >> changedDetailID;
 
         string changedDetail = "";
+        Site changedSiteDetail;
         string newValueChangedDetail = "";
 
         if (changedDetailID == 1){
@@ -351,12 +372,29 @@ int main(int argc, char** argv) {
         } else if (changedDetailID == 4) {
           changedDetail = "EventType";
         } else if (changedDetailID == 5){
-          changedDetail = "site";
+          changedSiteDetail = initializeWithEmptySiteObject();
         } else {
           cout << "I didn't understand your input. Try again." << endl;
         }
 
-        cout << "What is the new value for the " << changedDetail << " detail?" << endl;
+        string siteName;
+        //string siteStatus;
+        //int siteYearEstablished
+
+        if (changedDetailID != 5){
+          cout << "What is the new value for the " << changedDetail << " detail?" << endl;
+        } else { // If the user wants to change the site an event occurred at
+          cout << "What is the name of the site?" << endl;
+          cin >> siteName;
+          /*
+          if (siteName != st1.getSiteName() ){
+            
+          }*/
+          //cout << "What is the status of the site?" << endl;
+          //cin >> siteStatus;
+          //cout << "What is the year of the site? (Enter a numeric)" << endl;
+          //cin >> siteYearEstablished;
+        }
 
         cin >> newValueChangedDetail;
 
@@ -369,7 +407,10 @@ int main(int argc, char** argv) {
         } else if (changedDetailID == 4){
           allEvents[changedEventID].setEventType(newValueChangedDetail);
         } else if (changedDetailID == 5){
-          allEvents[changedEventID].setSite(newValueChangedDetail);
+          Site newSt;
+          newSt = initializeWithEmptySiteObject();
+          newSt.setSiteName(siteName);
+          allEvents[changedEventID].setSite(newSt);
         }
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
