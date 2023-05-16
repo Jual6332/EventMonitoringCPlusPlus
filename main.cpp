@@ -436,7 +436,6 @@ int main(int argc, char** argv) {
           } else {
             allEvents[changedEventID].setSite(newSt);
           }
-          
         }
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
