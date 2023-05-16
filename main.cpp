@@ -181,10 +181,10 @@ int main(int argc, char** argv) {
   Site st4;
 
   // Initialize the new events to empty site objects
-  //st1 = initializeWithEmptySiteObject();
- // st2 = initializeWithEmptySiteObject();
-  //st3 = initializeWithEmptySiteObject();
-  //st4 = initializeWithEmptySiteObject();
+  st1 = initializeWithEmptySiteObject();
+  st2 = initializeWithEmptySiteObject();
+  st3 = initializeWithEmptySiteObject();
+  st4 = initializeWithEmptySiteObject();
 
   // Declare a filtered array of event objects
   //Event filteredArray;
