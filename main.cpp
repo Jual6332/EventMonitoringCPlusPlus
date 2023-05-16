@@ -4,6 +4,7 @@
 using namespace std;
 
 const int totalPossibleEvents = 100;
+const int totalPossibleSites = 4;
 
 class Site {
   private:
@@ -160,7 +161,7 @@ int main(int argc, char** argv) {
   // Define the array collection of CPU events
   Event CPUEvents[totalPossibleEvents];
   // Define the array collection of sites
-  Site allSites[numSites];
+  Site allSites[totalPossibleSites];
 
   // User-input
   string answer;
@@ -199,6 +200,12 @@ int main(int argc, char** argv) {
   // Check if data has been ingested into the algorithm
   bool hasDataBeenIngested = false;
 
+  // Check if site has been found in the site array
+  bool siteFound = false;
+
+  // Store the index at which the site is found in the site array
+  int siteFoundIndex = 0;
+
   while (answer != "Q" && answer != "q"){
     cout << "Welcome to the command-line event monitoring system for the Network Monitoring team at Ford!" << endl;
     cout << "Here are the current features:" << endl;
@@ -217,21 +224,25 @@ int main(int argc, char** argv) {
       st1.setSiteStatus("Active");
       st1.setSiteYearEstablished(1980);
       allSites[numSites] = st1;
+      numSites++;
 
       st2.setSiteName("AEC");
       st2.setSiteStatus("Active");
       st2.setSiteYearEstablished(1996);
       allSites[numSites] = st2;
+      numSites++;
 
       st3.setSiteName("Rotunda Center");
       st3.setSiteStatus("Active");
       st3.setSiteYearEstablished(2005);
       allSites[numSites] = st3;
+      numSites++;
 
       st4.setSiteName("Electric plant");
       st4.setSiteStatus("Active");
       st4.setSiteYearEstablished(1992);
       allSites[numSites] = st4;
+      numSites++;
       
       // Incoming Event Data
       event1.setTitle("AEC router 1A is down.");
@@ -394,12 +405,14 @@ int main(int argc, char** argv) {
         } else { // If the user wants to change the site an event occurred at
           cout << "What is the name of the site?" << endl;
           cin >> siteName;
-          /*
+          
           for (int i=0; i<numSites; i++){
-            if (siteName != allSites[i].getSiteName() ){
-              
+            if (siteName == allSites[i].getSiteName() ){
+              cout << "Site found." << endl;
+              siteFound = true;
+              siteFoundIndex = i;
             }
-          }*/
+          }
           //cout << "What is the status of the site?" << endl;
           //cin >> siteStatus;
           //cout << "What is the year of the site? (Enter a numeric)" << endl;
@@ -418,7 +431,12 @@ int main(int argc, char** argv) {
           Site newSt;
           newSt = initializeWithEmptySiteObject();
           newSt.setSiteName(siteName);
-          allEvents[changedEventID].setSite(newSt);
+          if (siteFound){
+            allEvents[changedEventID].setSite(allSites[siteFoundIndex]);
+          } else {
+            allEvents[changedEventID].setSite(newSt);
+          }
+          
         }
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
