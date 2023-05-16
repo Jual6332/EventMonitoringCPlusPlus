@@ -7,9 +7,9 @@ const int totalPossibleEvents = 100;
 
 class Site {
   private:
-    string name = "";
-    string status = ""; // Active, Maintenance, Decommissioned
-    int yearEstablished = 0;
+    string name;
+    string status; // Active, Maintenance, Decommissioned
+    int yearEstablished;
   public:
     string getSiteName(){
       return name;
@@ -33,11 +33,11 @@ class Site {
 
 class Event {
   private:
-    string title = "";
-    string description = "";
-    string severity = "";
-    string eventType = "";
-    string site = "";
+    string title;
+    string description;
+    string severity;
+    string eventType;
+    string site;
   public:
     string getTitle(){
       return title;
@@ -117,6 +117,15 @@ Event initializeWithEmptyEvent(){
   return ev;
 }
 
+Site initializeWithEmptySiteObject(){
+  Site st;
+  st.setSiteName("");
+  st.setSiteStatus("");
+  st.setSiteYearEstablished(0);
+  
+  return st;
+}
+
 void printAllEventData(Event allEvents[],int numEvents){
   // Display all event data
   cout << "Displaying all event data: " << endl;
@@ -169,7 +178,13 @@ int main(int argc, char** argv) {
   Site st1;
   Site st2;
   Site st3;
-  Site st3;
+  Site st4;
+
+  // Initialize the new events to empty site objects
+  //st1 = initializeWithEmptySiteObject();
+ // st2 = initializeWithEmptySiteObject();
+  //st3 = initializeWithEmptySiteObject();
+  //st4 = initializeWithEmptySiteObject();
 
   // Declare a filtered array of event objects
   //Event filteredArray;
