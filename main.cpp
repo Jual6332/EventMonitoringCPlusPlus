@@ -165,6 +165,12 @@ int main(int argc, char** argv) {
   event5 = initializeWithEmptyEvent();
   event6 = initializeWithEmptyEvent();
 
+  // Define the site object instances
+  Site st1;
+  Site st2;
+  Site st3;
+  Site st3;
+
   // Declare a filtered array of event objects
   //Event filteredArray;
 
