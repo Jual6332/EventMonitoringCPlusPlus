@@ -151,12 +151,16 @@ int main(int argc, char** argv) {
   int numRouterEvents = 0;
   // Define number of CPU events
   int numCPUEvents = 0;
+  // Define number of sites being monitored
+  int numSites = 0;
   // Define the array collection of all events 
   Event allEvents[totalPossibleEvents];
   // Define the array collection of router events
   Event routerEvents[totalPossibleEvents];
   // Define the array collection of CPU events
   Event CPUEvents[totalPossibleEvents];
+  // Define the array collection of sites
+  Site allSites[numSites];
 
   // User-input
   string answer;
@@ -212,18 +216,22 @@ int main(int argc, char** argv) {
       st1.setSiteName("WHQ");
       st1.setSiteStatus("Active");
       st1.setSiteYearEstablished(1980);
+      allSites[numSites] = st1;
 
       st2.setSiteName("AEC");
       st2.setSiteStatus("Active");
       st2.setSiteYearEstablished(1996);
+      allSites[numSites] = st2;
 
       st3.setSiteName("Rotunda Center");
       st3.setSiteStatus("Active");
       st3.setSiteYearEstablished(2005);
+      allSites[numSites] = st3;
 
       st4.setSiteName("Electric plant");
       st4.setSiteStatus("Active");
       st4.setSiteYearEstablished(1992);
+      allSites[numSites] = st4;
       
       // Incoming Event Data
       event1.setTitle("AEC router 1A is down.");
@@ -387,8 +395,10 @@ int main(int argc, char** argv) {
           cout << "What is the name of the site?" << endl;
           cin >> siteName;
           /*
-          if (siteName != st1.getSiteName() ){
-            
+          for (int i=0; i<numSites; i++){
+            if (siteName != allSites[i].getSiteName() ){
+              
+            }
           }*/
           //cout << "What is the status of the site?" << endl;
           //cin >> siteStatus;
