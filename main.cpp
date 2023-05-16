@@ -137,9 +137,9 @@ void printAllEventData(Event allEvents[],int numEvents){
     cout << "Event severity: " << allEvents[i].getSeverity() << endl;
     cout << "Event type: " << allEvents[i].getEventType() << endl;
     cout << "Event site: " << endl;
-    cout << allEvents[i].getSite().getSiteName() << endl;
-    cout << allEvents[i].getSite().getSiteStatus() << endl;
-    cout << allEvents[i].getSite().getSiteYearEstablished() << endl;
+    cout << "Site name: " << allEvents[i].getSite().getSiteName() << endl;
+    cout << "Site status: " << allEvents[i].getSite().getSiteStatus() << endl;
+    cout << "Site year established: " << allEvents[i].getSite().getSiteYearEstablished() << endl;
     cout << endl;
   }
 }
@@ -285,8 +285,6 @@ int main(int argc, char** argv) {
       routerEvents[numRouterEvents] = event6;
       numEvents++;
       numRouterEvents++;
-
-      
 
       hasDataBeenIngested = true; // Update to reflect that the data has been ingested
       cout << "Data successfully ingested." << endl;
