@@ -8,6 +8,8 @@ const int totalPossibleEvents = 100;
 class Site {
   private:
     string name = "";
+    string status = ""; // Active, Maintenance, Decommissioned
+    int yearEstablished = 0;
   public:
     string getSiteName(){
       return name;
