@@ -17,6 +17,18 @@ class Site {
     void setSiteName(string nm){
       name = nm;
     }
+    string getSiteStatus(){
+      return status;
+    }
+    void setSiteStatus(string st){
+      status = st;
+    }
+    int getSiteYearEstablished(){
+      return yearEstablished;
+    }
+    void setSiteYearEstablished(int yE){
+      yearEstablished = yE;
+    }
 };
 
 class Event {
