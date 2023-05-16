@@ -383,6 +383,8 @@ int main(int argc, char** argv) {
 
         if (changedDetailID != 5){
           cout << "What is the new value for the " << changedDetail << " detail?" << endl;
+          
+          cin >> newValueChangedDetail;
         } else { // If the user wants to change the site an event occurred at
           cout << "What is the name of the site?" << endl;
           cin >> siteName;
@@ -395,8 +397,6 @@ int main(int argc, char** argv) {
           //cout << "What is the year of the site? (Enter a numeric)" << endl;
           //cin >> siteYearEstablished;
         }
-
-        cin >> newValueChangedDetail;
 
         if (changedDetailID == 1){
           allEvents[changedEventID].setTitle(newValueChangedDetail);
