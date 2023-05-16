@@ -106,7 +106,7 @@ Event * filterBasedOnEventType(Event events,int numEvents){
 }
 */
 
-Event initializeWithEmptyEvent(){
+Event initializeWithEmptyEventObject(){
   Event ev;
   ev.setTitle("");
   ev.setDescription("");
@@ -167,12 +167,12 @@ int main(int argc, char** argv) {
   Event event6;
 
   // Initialize the new events to empty event objects
-  event1 = initializeWithEmptyEvent();
-  event2 = initializeWithEmptyEvent();
-  event3 = initializeWithEmptyEvent();
-  event4 = initializeWithEmptyEvent();
-  event5 = initializeWithEmptyEvent();
-  event6 = initializeWithEmptyEvent();
+  event1 = initializeWithEmptyEventObject();
+  event2 = initializeWithEmptyEventObject();
+  event3 = initializeWithEmptyEventObject();
+  event4 = initializeWithEmptyEventObject();
+  event5 = initializeWithEmptyEventObject();
+  event6 = initializeWithEmptyEventObject();
 
   // Define the site object instances
   Site st1;
