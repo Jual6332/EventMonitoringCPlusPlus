@@ -395,8 +395,8 @@ int main(int argc, char** argv) {
         }
 
         string siteName;
-        //string siteStatus;
-        //int siteYearEstablished
+        string siteStatus;
+        int siteYearEstablished;
 
         if (changedDetailID != 5){
           cout << "What is the new value for the " << changedDetail << " detail?" << endl;
@@ -413,10 +413,6 @@ int main(int argc, char** argv) {
               siteFoundIndex = i;
             }
           }
-          //cout << "What is the status of the site?" << endl;
-          //cin >> siteStatus;
-          //cout << "What is the year of the site? (Enter a numeric)" << endl;
-          //cin >> siteYearEstablished;
         }
 
         if (changedDetailID == 1){
@@ -434,6 +430,13 @@ int main(int argc, char** argv) {
           if (siteFound){
             allEvents[changedEventID].setSite(allSites[siteFoundIndex]);
           } else {
+            cout << "I can tell that you are adding a new site." << endl;
+            cout << "What is the status of the site?" << endl;
+            cin >> siteStatus;
+            cout << "What is the year of the site? (Enter a numeric)" << endl;
+            cin >> siteYearEstablished;
+            newSt.setSiteStatus(siteStatus);
+            newSt.setSiteYearEstablished(siteYearEstablished);
             allEvents[changedEventID].setSite(newSt);
           }
         }
