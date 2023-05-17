@@ -4,7 +4,7 @@
 using namespace std;
 
 const int totalPossibleEvents = 100;
-const int totalPossibleSites = 4;
+const int totalPossibleSites = 15;
 
 class Site {
   private:
@@ -214,6 +214,7 @@ int main(int argc, char** argv) {
     cout << "3. Display router event data" << endl;
     cout << "4. Display CPU event data" << endl;
     cout << "5. Change an event's data" << endl;
+    cout << "6. Add a site's data" << endl;
     cout << "Q. Quit program" << endl;
     cout << endl;
     cout << "What do you want to do?" << endl;
@@ -442,6 +443,43 @@ int main(int argc, char** argv) {
         }
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
+      }
+    } else if (answer == "6"){
+      string siteName;
+      string siteStatus;
+      int siteYearEstablished;
+
+      cout << "What is the name of the site?" << endl;
+      cin >> siteName;
+
+      // Traverse the allSitesArray to find the site in question
+      // If after traversing the entire array we don't find the site name given by the user,
+      // we know that a truly new site name was given. Otherwise we return the print statement
+      // that a site by the name given already exists in the system.
+      for (int i=0; i<numSites; i++){
+        if (siteName == allSites[i].getSiteName() ){
+          cout << "A site by this name already exists!" << endl;
+          siteFound = true;
+          siteFoundIndex = i;
+        }
+      }
+
+      if (!siteFound){
+        cout << "I can tell that you are adding a new site." << endl;
+        
+        Site newSt;
+        newSt = initializeWithEmptySiteObject();
+        newSt.setSiteName(siteName);
+        
+        cout << "What is the status of the site?" << endl;
+        cin >> siteStatus;
+        cout << "What is the year of the site? (Enter a numeric)" << endl;
+        cin >> siteYearEstablished;
+        
+        newSt.setSiteStatus(siteStatus);
+        newSt.setSiteYearEstablished(siteYearEstablished);
+        allSites[numSites] = newSt;
+        numSites++;
       }
     } else if (answer == "Q" || answer == "q"){
       cout << "The program is stopping." << endl;
