@@ -153,6 +153,8 @@ Event * filterBySeverity(Event allEvents[],int numEvents){
   for (int i=0; i<numEvents ; i++){
     for (int j=0; j<numEvents - i; j++){
       if (allEvents[i].getSeverity() < allEvents[i].getSeverity()){
+        //cout << "Event Name:" << allEvents[i] << endl;
+        //cout << "Event Severity:" << allEvents[i] << endl;
         temp = allEvents[i];
         filteredArray[i] = allEvents[j];
         filteredArray[j] = temp;
@@ -229,11 +231,12 @@ int main(int argc, char** argv) {
     cout << "Here are the current features:" << endl;
     cout << "1. Ingest event data" << endl;
     cout << "2. Display all event data" << endl;
-    cout << "3. Display router event data" << endl;
-    cout << "4. Display CPU event data" << endl;
-    cout << "5. Change an event's data" << endl;
-    cout << "6. Print site data" << endl;
-    cout << "7. Add a site's data" << endl;
+    cout << "3. Display event data by severity" << endl;
+    cout << "4. Display router event data" << endl;
+    cout << "5. Display CPU event data" << endl;
+    cout << "6. Change an event's data" << endl;
+    cout << "7. Print site data" << endl;
+    cout << "8. Add a site's data" << endl;
     cout << "Q. Quit program" << endl;
     cout << endl;
     cout << "What do you want to do?" << endl;
@@ -355,7 +358,22 @@ int main(int argc, char** argv) {
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
-    } else if (answer == "3"){
+    } else if(answer == "3"){
+      if (hasDataBeenIngested){
+        /*
+        Event filteredEvents[numEvents];
+        Event * ptrToFilteredEvents;
+        ptrToFilteredEvents = filterBySeverity(allEvents,numEvents);
+        for (int i=0;i<numEvents;i++){
+          filteredEvents[i] = ptrToFilteredEvents[i];
+        }
+        printAllEventData(filteredEvents,numEvents);
+        delete(ptrToFilteredEvents);
+        */
+      } else {
+        cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
+      }
+    } else if (answer == "4"){
       if (hasDataBeenIngested){
         // Display router event data
         for (int i=0; i<numRouterEvents; i++){
@@ -367,7 +385,7 @@ int main(int argc, char** argv) {
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
-    } else if (answer == "4"){
+    } else if (answer == "5"){
       if (hasDataBeenIngested){
         // Display router event data
         for (int i=0; i<numCPUEvents; i++){
@@ -379,7 +397,7 @@ int main(int argc, char** argv) {
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
-    } else if (answer == "5"){
+    } else if (answer == "6"){
       if (hasDataBeenIngested){
         int changedEventID = 0;
         int changedDetailID = 0;
@@ -464,7 +482,7 @@ int main(int argc, char** argv) {
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
-    } else if (answer == "6"){
+    } else if (answer == "7"){
       if(hasDataBeenIngested){
         cout << "Printing all site data" << endl;
         for (int i=0; i<numSites; i++){
@@ -476,7 +494,7 @@ int main(int argc, char** argv) {
       } else {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
-    } else if (answer == "7"){
+    } else if (answer == "8"){
       string siteName;
       string siteStatus;
       int siteYearEstablished;
