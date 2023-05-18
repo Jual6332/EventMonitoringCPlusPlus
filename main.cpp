@@ -36,7 +36,7 @@ class Event {
   private:
     string title;
     string description;
-    string severity;
+    int severity;
     string eventType;
     Site site;
   public:
@@ -52,10 +52,10 @@ class Event {
     void setDescription(string de){
       description = de;
     }
-    string getSeverity(){
+    int getSeverity(){
       return severity;
     }
-    void setSeverity(string sv){
+    void setSeverity(int sv){
       severity = sv;
     }
     string getEventType(){
@@ -120,7 +120,7 @@ Event initializeWithEmptyEventObject(){
   Event ev;
   ev.setTitle("");
   ev.setDescription("");
-  ev.setSeverity("");
+  ev.setSeverity(0);
   ev.setEventType("");
   ev.setSite(initializeWithEmptySiteObject());
   
@@ -143,6 +143,24 @@ void printAllEventData(Event allEvents[],int numEvents){
     cout << "Site year established: " << allEvents[i].getSite().getSiteYearEstablished() << endl;
     cout << endl;
   }
+}
+
+Event * filterBySeverity(Event allEvents[],int numEvents){
+  Event * filteredArray = new Event[numEvents];
+  Event temp;
+  //filteredArray = allEvents;
+  
+  for (int i=0; i<numEvents ; i++){
+    for (int j=0; j<numEvents - i; j++){
+      if (allEvents[i].getSeverity() < allEvents[i].getSeverity()){
+        temp = allEvents[i];
+        filteredArray[i] = allEvents[j];
+        filteredArray[j] = temp;
+      }
+    }
+  }
+  
+  return filteredArray;
 }
 
 int main(int argc, char** argv) {  
@@ -249,7 +267,7 @@ int main(int argc, char** argv) {
       // Incoming Event Data
       event1.setTitle("AEC router 1A is down.");
       event1.setDescription("Router went down on the weekend due to power outage.");
-      event1.setSeverity("critical");
+      event1.setSeverity(5); // Critical
       event1.setEventType("router");
       event1.setSite(st2);
       allEvents[numEvents] = event1;
@@ -259,7 +277,7 @@ int main(int argc, char** argv) {
     
       event2.setTitle("AEC router 2A is down.");
       event2.setDescription("Router went down on the weekend due to power outage.");
-      event2.setSeverity("critical");
+      event2.setSeverity(5);
       event2.setEventType("router");
       event2.setSite(st2);
       allEvents[numEvents] = event2;
@@ -269,7 +287,7 @@ int main(int argc, char** argv) {
     
       event3.setTitle("WHQ CPU27 is down.");
       event3.setDescription("CPU disconnected from server.");
-      event3.setSeverity("medium");
+      event3.setSeverity(3);
       event3.setEventType("cpu");
       event3.setSite(st1);
       allEvents[numEvents] = event3;
@@ -279,7 +297,7 @@ int main(int argc, char** argv) {
 
       event4.setTitle("WHQ CPU38 is down.");
       event4.setDescription("CPU disconnected from server.");
-      event4.setSeverity("medium");
+      event4.setSeverity(3);
       event4.setEventType("cpu");
       event4.setSite(st1);
       allEvents[numEvents] = event4;
@@ -289,7 +307,7 @@ int main(int argc, char** argv) {
 
       event5.setTitle("Maintenance room router 1B is down.");
       event5.setDescription("Router went down on the weekend due to power outage.");
-      event5.setSeverity("medium");
+      event5.setSeverity(3);
       event5.setEventType("router");
       event5.setSite(st2);
       allEvents[numEvents] = event5;
@@ -299,7 +317,7 @@ int main(int argc, char** argv) {
 
       event6.setTitle("Electric plant router 12B is down.");
       event6.setDescription("Router went down on the weekend due to power outage.");
-      event6.setSeverity("critical");
+      event6.setSeverity(5);
       event6.setEventType("router");
       event6.setSite(st4);
       allEvents[numEvents] = event6;
@@ -422,7 +440,8 @@ int main(int argc, char** argv) {
         } else if (changedDetailID == 2){
           allEvents[changedEventID].setDescription(newValueChangedDetail);
         } else if (changedDetailID == 3){
-          allEvents[changedEventID].setSeverity(newValueChangedDetail);
+          int newDetail = stoi(newValueChangedDetail);
+          allEvents[changedEventID].setSeverity(newDetail);
         } else if (changedDetailID == 4){
           allEvents[changedEventID].setEventType(newValueChangedDetail);
         } else if (changedDetailID == 5){
