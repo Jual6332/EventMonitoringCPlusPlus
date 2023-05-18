@@ -214,7 +214,8 @@ int main(int argc, char** argv) {
     cout << "3. Display router event data" << endl;
     cout << "4. Display CPU event data" << endl;
     cout << "5. Change an event's data" << endl;
-    cout << "6. Add a site's data" << endl;
+    cout << "6. Print site data" << endl;
+    cout << "7. Add a site's data" << endl;
     cout << "Q. Quit program" << endl;
     cout << endl;
     cout << "What do you want to do?" << endl;
@@ -445,6 +446,18 @@ int main(int argc, char** argv) {
         cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
       }
     } else if (answer == "6"){
+      if(hasDataBeenIngested){
+        cout << "Printing all site data" << endl;
+        for (int i=0; i<numSites; i++){
+          cout << "Site name:" << allSites[i].getSiteName() << endl;
+          cout << "Site status:" << allSites[i].getSiteStatus() << endl;
+          cout << "Site year established:" << allSites[i].getSiteYearEstablished() << endl;
+        }
+        cout << endl;
+      } else {
+        cout << "Data must be ingested before being displayed! Choose Option 1 first." << endl;
+      }
+    } else if (answer == "7"){
       string siteName;
       string siteStatus;
       int siteYearEstablished;
